@@ -1,0 +1,1787 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&display=swap');
+
+
+textarea.autosizes {
+    border: 0;
+    -ms-flex: 1 0 0;
+    resize: none;
+    border: 1px solid rgb(236, 232, 232);
+    flex: 1 0 0;
+    margin: 0;
+    outline: 0;
+    overflow: hidden;
+    padding: 8px 8px 9px;
+    text-overflow: ellipsis;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 14px;
+    font-family: Segoe UI;
+    color: #47535d;
+    width: 100%;
+}
+
+
+
+
+[tooltip] {
+    position: relative;
+    /* opinion 1 */
+}
+
+ul.rule-download.rul li {
+    text-align: center;
+}
+
+span.bt.donwl:hover {
+    background: #b049c1;
+}
+
+/* Applies to all tooltips */
+
+[tooltip]::before,
+[tooltip]::after {
+    text-transform: none;
+    /* opinion 2 */
+    font-size: .9em;
+    /* opinion 3 */
+    line-height: 1;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    pointer-events: none;
+    position: absolute;
+    display: none;
+    opacity: 0;
+}
+
+[tooltip]::before {
+    content: '';
+    border: 5px solid transparent;
+    /* opinion 4 */
+    z-index: 1001;
+    /* absurdity 1 */
+}
+
+[tooltip]::after {
+    content: attr(tooltip);
+    /* magic! */
+    /* most of the rest of this is opinion */
+    font-family: Helvetica, sans-serif;
+    text-align: center;
+    /* 
+      Let the content set the size of the tooltips 
+      but this will also keep them from being obnoxious
+      */
+    min-width: 3em;
+    max-width: 21em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 1ch 1.5ch;
+    border-radius: .3ch;
+    box-shadow: 0 1em 2em -.5em rgba(0, 0, 0, 0.35);
+    background: #333;
+    color: #fff;
+    z-index: 1000;
+    /* absurdity 2 */
+}
+
+
+/* Make the tooltips respond to hover */
+
+[tooltip]:hover::before,
+[tooltip]:hover::after {
+    display: block;
+}
+
+
+/* don't show empty tooltips */
+
+[tooltip='']::before,
+[tooltip='']::after {
+    display: none !important;
+}
+
+
+/* FLOW: UP */
+
+[tooltip]:not([flow])::before,
+[tooltip][flow^="up"]::before {
+    bottom: 100%;
+    border-bottom-width: 0;
+    border-top-color: #333;
+}
+
+[tooltip]:not([flow])::after,
+[tooltip][flow^="up"]::after {
+    bottom: calc(100% + 5px);
+}
+
+[tooltip]:not([flow])::before,
+[tooltip]:not([flow])::after,
+[tooltip][flow^="up"]::before,
+[tooltip][flow^="up"]::after {
+    left: 50%;
+    -webkit-transform: translate(-50%, -.5em);
+    transform: translate(-50%, -.5em);
+}
+
+
+/* FLOW: DOWN */
+
+[tooltip][flow^="down"]::before {
+    top: 100%;
+    border-top-width: 0;
+    border-bottom-color: #333;
+}
+
+[tooltip][flow^="down"]::after {
+    top: calc(100% + 5px);
+}
+
+[tooltip][flow^="down"]::before,
+[tooltip][flow^="down"]::after {
+    left: 50%;
+    -webkit-transform: translate(-50%, .5em);
+    transform: translate(-50%, .5em);
+}
+
+
+/* FLOW: LEFT */
+
+[tooltip][flow^="left"]::before {
+    top: 50%;
+    border-right-width: 0;
+    border-left-color: #333;
+    left: calc(0em - 5px);
+    -webkit-transform: translate(-.5em, -50%);
+    transform: translate(-.5em, -50%);
+}
+
+[tooltip][flow^="left"]::after {
+    top: 50%;
+    right: calc(100% + 5px);
+    -webkit-transform: translate(-.5em, -50%);
+    transform: translate(-.5em, -50%);
+}
+
+
+/* FLOW: RIGHT */
+
+[tooltip][flow^="right"]::before {
+    top: 50%;
+    border-left-width: 0;
+    border-right-color: #333;
+    right: calc(0em - 5px);
+    -webkit-transform: translate(.5em, -50%);
+    transform: translate(.5em, -50%);
+}
+
+[tooltip][flow^="right"]::after {
+    top: 50%;
+    left: calc(100% + 5px);
+    -webkit-transform: translate(.5em, -50%);
+    transform: translate(.5em, -50%);
+}
+
+
+/* KEYFRAMES */
+
+@-webkit-keyframes tooltips-vert {
+    to {
+        opacity: .9;
+        -webkit-transform: translate(-50%, 0);
+        transform: translate(-50%, 0);
+    }
+}
+
+@keyframes tooltips-vert {
+    to {
+        opacity: .9;
+        -webkit-transform: translate(-50%, 0);
+        transform: translate(-50%, 0);
+    }
+}
+
+@-webkit-keyframes tooltips-horz {
+    to {
+        opacity: .9;
+        -webkit-transform: translate(0, -50%);
+        transform: translate(0, -50%);
+    }
+}
+
+@keyframes tooltips-horz {
+    to {
+        opacity: .9;
+        -webkit-transform: translate(0, -50%);
+        transform: translate(0, -50%);
+    }
+}
+
+
+/* FX All The Things */
+
+[tooltip]:not([flow]):hover::before,
+[tooltip]:not([flow]):hover::after,
+[tooltip][flow^="up"]:hover::before,
+[tooltip][flow^="up"]:hover::after,
+[tooltip][flow^="down"]:hover::before,
+[tooltip][flow^="down"]:hover::after {
+    -webkit-animation: tooltips-vert 300ms ease-out forwards;
+    animation: tooltips-vert 300ms ease-out forwards;
+}
+
+.avatar {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.avatar img {
+    overflow: hidden;
+    width: 205px;
+    height: 205px;
+    padding: 5px;
+    border: 1px solid #efefef;
+    box-sizing: content-box;
+}
+
+[tooltip][flow^="left"]:hover::before,
+[tooltip][flow^="left"]:hover::after,
+[tooltip][flow^="right"]:hover::before,
+[tooltip][flow^="right"]:hover::after {
+    -webkit-animation: tooltips-horz 300ms ease-out forwards;
+    animation: tooltips-horz 300ms ease-out forwards;
+}
+
+ul.porn-header__submenu-sub {
+    position: absolute;
+    background: #9c27b0;
+    margin: 0;
+    padding: 10px 0px;
+    width: 200px;
+    left: 0;
+    top: 62px;
+    color: white;
+    display: none;
+}
+
+ul.porn-header__submenu-sub li {}
+
+a.page.active {
+    background: #9c27b0;
+    color: white;
+}
+
+.porn-category-bottom.stories.opens {
+    height: auto;
+    max-height: none;
+}
+
+.pagination {
+    margin: 20px 0;
+}
+
+.page.special {
+    background: #9c27b0;
+    color: white;
+}
+
+.porn-category.memes {
+    width: 100%;
+    align-items: center;
+    padding: 0px 0px 20px 0px;
+    box-shadow: none;
+    margin: 0;
+}
+
+.but-center {
+    display: flex;
+    margin: 10px 15px 15px 15px;
+    justify-content: flex-end;
+}
+
+.bt-st:hover {
+    background: #9c27b0;
+    color: white;
+}
+
+div#top {
+    position: fixed;
+    width: 35px;
+    height: 35px;
+    background: white;
+    border: 1px solid #efefef;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: 10px;
+    left: 21px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.porn-category-bottom.mems {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0px;
+    border-bottom: 1px solid #efefef;
+}
+
+.porn-category-top.memes {
+    align-items: center;
+    height: auto;
+    display: flex;
+}
+
+header {
+    left: 0px;
+    top: 0px;
+    right: 0px;
+    z-index: 11;
+    position: fixed;
+    background: #ffffff;
+    border-bottom: 0px solid #9c27b0;
+    box-shadow: 1px 1px 4px #cccccc;
+}
+
+.porn-category-top.comics img {
+    width: 100%;
+    height: auto;
+}
+
+.row.row-00 {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.input-name-out {
+    width: 100%;
+    font-size: 12px;
+    font-weight: 400;
+    margin-bottom: 5px;
+    color: #24292e;
+}
+
+.do-reg-form {
+    width: 650px;
+    padding: 0px 20px 0px 20px;
+    /* box-shadow: 1px 1px 8px #c1c1c1; */
+    background: #ffffff;
+    border-radius: 2px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.bt-reg-panel {
+    margin: 20px 0;
+    width: 100%;
+    justify-content: flex-end;
+    align-items: center;
+    display: flex;
+}
+
+div.bt-auth {
+    padding: 9px 20px;
+    font-size: 11px;
+    text-transform: none;
+    margin: 0 5px;
+    background: #9c27b0;
+    color: white;
+    letter-spacing: 1px;
+    border-radius: 5px;
+}
+
+.input-out {
+    margin: 1% 1% 2% 1%;
+    width: 48%;
+}
+
+.title-s {
+    font-size: 15px;
+    line-height: 1.5;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 400;
+    position: relative;
+    color: black;
+    margin: 0px;
+    padding: 0px 0px 15px 0px;
+}
+
+.porn-category.stories::before {
+    content: "";
+    width: 50px;
+    height: 3px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: #9c27b0;
+}
+
+.porn-category.stories::after {
+    content: "";
+    width: 3px;
+    height: 50px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: #9c27b0;
+}
+
+section.section.section-10 {
+    padding: 20px 0 0 0;
+}
+
+.row.row-30 {
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.warning {
+    font-size: 12px;
+    color: #9c27b0;
+}
+
+.porn-category {
+    width: 250px;
+    display: flex;
+    box-shadow: 1px 1px 4px #e2e2e2;
+    flex-direction: column;
+    margin: 5px;
+}
+
+.porn-category-top {
+    width: 100%;
+    overflow: hidden;
+    height: 250px;
+    position: relative;
+    justify-content: center;
+}
+
+.porn-category-bottom {
+    font-size: 14px;
+    line-height: 1.33333;
+    letter-spacing: 1px;
+    font-weight: 400;
+    position: relative;
+    color: #24292e;
+    margin: 0px;
+    padding: 15px 20px;
+}
+
+.porn-navbar-main-outer {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.porn-navbar-panel {
+    display: flex;
+    align-items: center;
+}
+
+.porn-navbar-main-element {
+    display: flex;
+    align-items: center;
+}
+
+ul.porn-navbar-nav {
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+li.porn-nav-item {
+    padding: 15px 10px;
+    transition: all 0.5s;
+    border-color: #9c27b0;
+    margin: 0px 5px;
+    position: relative;
+}
+
+a.porn-nav-link {
+    color: #333;
+    letter-spacing: 0px;
+    font-weight: 400;
+    font-size: 12px;
+}
+
+li.porn-nav-item.active {
+    border-bottom: 2px solid #9c27b0;
+}
+
+.porn-navbar-main {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+li.porn-nav-item:hover {
+    border-bottom: 2px solid #9c27b0;
+}
+
+.title {
+    font-size: 20px;
+    line-height: 1.33333;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 400;
+    position: relative;
+    color: black;
+    margin: 0px;
+    padding: 0px 0px 10px 0px;
+}
+
+.title::before {
+    position: absolute;
+    height: 2px;
+    background: #9c27b0;
+    content: "";
+    width: 50%;
+    bottom: 0;
+}
+
+section.section.section-140 {
+    width: 100%;
+    display: flex;
+}
+
+main {
+    width: 1200px;
+    margin: 0 auto;
+    margin-top: 90px;
+    background: white;
+    border: 1px solid #efefef;
+}
+
+a.porn-nav-link-sub {
+    color: white;
+    display: flex;
+    padding: 3px 20px;
+    font-size: 13px;
+}
+
+ul.porn-header__submenu-sub li:hover {
+    background: #a837bb;
+}
+
+.desc {
+    font-size: 14px;
+    line-height: 2.1;
+    letter-spacing: 1px;
+    font-weight: 300;
+    position: relative;
+    color: #0e0e0e;
+    margin: 0px;
+    padding: 15px 0px;
+}
+
+.container-10 {
+    width: 100%;
+    display: flex;
+}
+
+.container-5 {
+    width: 100%;
+    display: flex;
+}
+
+.container {
+    width: 100%;
+    padding-right: 30px;
+    padding-left: 30px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+section.section.section-0 {
+    margin: 25px 0 0 0;
+    padding: 10p;
+}
+
+h3.title-section {
+    font-size: 28px;
+    line-height: 1.33333;
+    margin: 0;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    font-weight: 100;
+    position: relative;
+    color: #404044;
+}
+
+section.section.section-90 {
+    padding: 100px;
+}
+
+a.button.button-error {
+    padding: 12px 22px 10px 22px;
+    font-size: 9px;
+    color: #383434;
+    border-radius: 86px;
+    /* background-color: #2c343b; */
+    margin-top: 15px;
+    border-color: #2c343b;
+}
+
+.button {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    padding: 11px 35px;
+    font-size: 12px;
+    line-height: 1.25;
+    border: 1px solid;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.23em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-align: center;
+    cursor: pointer;
+    vertical-align: middle;
+    user-select: none;
+    transition: 400ms all ease-in-out;
+}
+
+.error-text {
+    color: #5a5a5a;
+    font-size: 14px;
+    line-height: 1.33333;
+    letter-spacing: 1px;
+    font-weight: 100;
+    position: relative;
+}
+
+.error-text-header {
+    font-size: 67px;
+    line-height: 1.33333;
+    padding: 50px 0;
+    letter-spacing: 4px;
+    text-transform: none;
+    font-weight: 600;
+    position: relative;
+}
+
+.porn-category-top img {
+    height: 100%;
+    justify-content: center;
+    display: flex;
+}
+
+section {
+    display: flex;
+}
+
+.section-20 {
+    padding: 30px 0 0 0;
+    width: 100%;
+}
+
+.container {
+    /* display: flex; */
+    /* width: 100%; */
+}
+
+section.section.section-100 {
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    padding: 0 2%;
+}
+
+.row.row-150 {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0px 20px 20px 20px;
+}
+
+.video-desc {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+}
+
+.heart {
+    margin-right: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.but-panel {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin: 20px 0 0px 0;
+}
+
+.watch-desc {
+    font-size: 14px;
+    color: #333;
+    line-height: 30px;
+}
+
+.category {
+    font-size: 20px;
+    line-height: 1.33333;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 400;
+    position: relative;
+    color: black;
+    margin: 0px;
+    padding: 0px 0px 15px 0px;
+}
+
+.button.bp {
+    padding: 10px 20px;
+    font-size: 12px;
+    text-transform: none;
+    margin: 0 5px;
+    background: #24292e;
+    color: white;
+    letter-spacing: 1px;
+    border-radius: 100px;
+}
+
+.button.bp.repost {
+    background: #ff9800;
+}
+
+.button.bp.like {
+    background: #E91E63;
+}
+
+.view {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 20px;
+}
+
+i.fa.fa-heart-o {
+    font-size: 18px;
+    color: red;
+    margin: 10px 5px 10px 10px;
+}
+
+.number-like {
+    font-size: 14px;
+}
+
+i.fa.fa-eye {
+    font-size: 18px;
+    color: #424242;
+    margin: 10px 5px 10px 10px;
+}
+
+.porn-navbar-icon-outer {
+    border: 2px solid #9c27b0;
+    padding: 0 18px;
+}
+
+.row.row-65.flex-end {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+li.porn-nav-item.auth {
+    border-bottom: 2px solid #9c27b0;
+    border-right: 2px solid #9c27b0;
+}
+
+li.porn-nav-item.auth:hover {
+    background: #1a1b1d;
+}
+
+a.porn-nav-link.auth {
+    letter-spacing: 1px;
+}
+
+a.porn-navbar-icon {
+    color: #9c27b0;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.porn-navbar-icon span {
+    color: black;
+    font-size: 18px;
+    font-weight: 100;
+}
+
+.error-button {
+    justify-content: center;
+    display: flex;
+    margin: 50px 0;
+}
+
+.button.bp:hover {
+    background: #24292e;
+    color: #ff9800;
+}
+
+section.section.section-120 {
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    margin: 50px 0;
+}
+
+.center {
+    align-items: center !important;
+}
+
+.row {
+    display: flex;
+    width: 100%;
+}
+
+input.auth:focus {
+    border-bottom: 1px solid #9c27b0;
+}
+
+.porn-user-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login {
+    color: #000;
+    letter-spacing: 2px;
+    font-weight: 300;
+    font-size: 13px;
+}
+
+.porn-user-header-login {
+    margin: 0 20px 0 0px;
+}
+
+a.porn-logout-bt {
+    padding: 3px 20px;
+    font-size: 12px;
+    text-transform: none;
+    margin: 0 5px;
+    background: #9c27b0;
+    color: white;
+    letter-spacing: 0px;
+    border-radius: 2px;
+}
+
+.response-form-all {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
+}
+
+.response-form {
+    font-size: 12px;
+    padding: 7px 20px;
+    color: #E91E63;
+    display: none;
+    text-align: center;
+}
+
+.porn-user-header-img {
+    height: 30px;
+    width: 30px;
+    overflow: hidden;
+    margin: 0px 10px 0 10px;
+    border-radius: 3px;
+    position: relative;
+}
+
+.porn-user-header-img img {
+    width: 100%;
+    position: absolute;
+}
+
+.s-photo-outer {
+    display: flex;
+    margin: 10px;
+    /* box-shadow: 1px 1px 8px #c1c1c1; */
+    /* height: 1280px; */
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.s-photo-outer img {
+    height: 1000px;
+    box-shadow: 1px 1px 8px #c1c1c1;
+    display: flex;
+}
+
+.porn-category.comics {
+    width: 400px;
+    margin: 30px;
+}
+
+.porn-category-top.comics {
+    height: 400px;
+}
+
+.name-category {
+    margin: 0px 0px 10px 0px;
+    color: #444444;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    border-bottom: 2px solid #ff9800;
+}
+
+.pages-photos-comisc {
+    width: 100%;
+    text-align: center;
+    margin: 10px 10px 20px 10px;
+    display: flex;
+    justify-content: center;
+    color: #333;
+    font-size: 12px;
+}
+
+input.auth {
+    width: 100%;
+    padding: 8px 8px;
+    font-size: 12px;
+    color: #333;
+    font-weight: 400;
+    border: 0;
+    border-bottom: 1px solid silver;
+    background: #ffffff;
+    font-family: 'Poppins', sans-serif;
+}
+
+.pages-photos-comisc {
+    width: 100%;
+    text-align: center;
+    margin: 10px 10px 20px 10px;
+    display: flex;
+    justify-content: center;
+    color: #333;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.porn-category-top.memes img {
+    height: auto;
+    width: auto;
+    max-width: 100%;
+    box-shadow: none;
+}
+
+.ml {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+input.auth {
+    width: 100%;
+    padding: 8px 8px;
+    font-size: 12px;
+    color: #333;
+    font-weight: 400;
+    border: 0;
+    border-bottom: 1px solid silver;
+    background: #ffffff;
+    font-family: 'Poppins', sans-serif;
+}
+
+.bt-st {
+    padding: 2px 20px;
+    font-size: 12px;
+    text-transform: none;
+    margin: 0 5px;
+    background: #fdfdfd;
+    color: #9c27b0;
+    letter-spacing: 0px;
+    border-radius: 2px;
+    border: 2px solid #9c27b0;
+    cursor: pointer;
+    transition: all 0.6s;
+}
+
+.porn-category.stories {
+    width: 800px;
+    margin: 10px 10px 30px 10px;
+    box-shadow: none;
+    position: relative;
+    background: white;
+    border: 1px solid #efefef;
+}
+
+.porn-category-bottom.stories {
+    font-size: 14px;
+    line-height: 2;
+    letter-spacing: 0px;
+    font-weight: 400;
+    position: relative;
+    color: #0e0e0e;
+    margin: 0px;
+    padding: 10px 25px 25px 25px;
+    white-space: pre-line;
+    max-height: 145px;
+    overflow: hidden;
+}
+
+.pagination {
+    display: flex;
+}
+
+.page {
+    font-size: 11px;
+    color: #9c27b0;
+    border-radius: 4px;
+    border: 1px solid #9c27b0;
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    height: 30px;
+    min-width: 30px;
+    cursor: pointer;
+    margin: 3px;
+    padding: 10px;
+    transition: 0.5s all;
+}
+
+.page-left {
+    position: fixed;
+    width: 45px;
+    height: 100px;
+    background: white;
+    border: 1px solid #efefef;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 50%;
+    left: 15px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: -50px;
+}
+
+.page-right {
+    position: fixed;
+    width: 45px;
+    height: 100px;
+    background: white;
+    border: 1px solid #efefef;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 50%;
+    right: 15px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: -50px;
+}
+
+.page-now {
+    position: fixed;
+    width: 63px;
+    height: 45px;
+    background: white;
+    border: 1px solid #efefef;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 140px;
+    font-weight: 400;
+    left: 0;
+    font-size: 14px;
+    cursor: pointer;
+    margin-top: -50px;
+}
+
+.l0 {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.l1 {
+    padding: 0 15px 0 0px;
+}
+
+.user-infos {
+    width: 50%;
+}
+
+.l2 {
+    font-weight: 300;
+    font-size: 14px;
+}
+
+.spec {
+    padding: 3px 20px;
+    font-size: 12px;
+    text-transform: none;
+    margin: 0 5px;
+    background: #9c27b0;
+    color: white;
+    letter-spacing: 0px;
+    border-radius: 2px;
+    margin: 5px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.win__fixed {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    overflow: auto;
+    background: #0000007a;
+}
+
+.win__relative {
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 9;
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+.owner-drag {
+    display: none;
+}
+
+.win_fixed-exit {
+    width: 100%;
+    position: relative;
+    height: 20px;
+}
+
+.win__windom {
+    background: #fff;
+    margin: 150px;
+    overflow: hidden;
+    box-shadow: 1px 1px 14px #616161;
+    border: 1px solid #8e2b9e;
+    min-width: 500px;
+}
+
+.title-windom {
+    background: #9c27b0;
+    color: #fff;
+    padding: 8px 20px;
+    line-height: 30px;
+    font-size: 13px;
+    font-weight: 400;
+    word-wrap: break-word;
+    overflow: hidden;
+    left: 0;
+    /* text-align: center; */
+}
+
+select#cats {
+    border: 0;
+    -ms-flex: 1 0 0;
+    border: 1px solid rgb(236, 232, 232);
+    flex: 1 0 0;
+    margin: 0;
+    outline: 0;
+    overflow: hidden;
+    padding: 8px 8px 9px;
+    text-overflow: ellipsis;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 14px;
+    font-family: Segoe UI;
+    color: #47535d;
+}
+
+ul.rule-download.rul {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 5%;
+    padding: 0;
+    font-size: 13px;
+    width: 90%;
+}
+
+input#imgfile {
+    display: none;
+}
+
+.position-load {
+    width: 0%;
+    box-sizing: border-box;
+    float: left;
+    background: #9c27b0;
+    height: 26px;
+    margin: 2% 5%;
+    border-radius: 2px;
+    display: none;
+    transition: 0.5s all;
+}
+
+span.bt.donwl {
+    cursor: pointer;
+    padding: 9px 20px;
+    font-size: 12px;
+    text-transform: none;
+    margin: 0 5px;
+    background: #9c27b0;
+    color: white;
+    letter-spacing: 0px;
+    border-radius: 2px;
+    transition: 0.5s all;
+}
+
+.file-upload {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+    width: 100%;
+}
+
+.web-message-title {
+    float: left;
+    width: 100%;
+    padding: 8px 20px;
+    line-height: 30px;
+    font-size: 14.4px;
+    font-weight: 400;
+    color: #000;
+    word-wrap: break-word;
+    overflow: hidden;
+    box-sizing: border-box;
+    background: #fff;
+    left: 0;
+}
+
+.win__inner {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    align-items: end;
+}
+
+div#crop {
+    cursor: pointer;
+    padding: 3px 20px;
+    font-size: 12px;
+    text-transform: none;
+    margin: 0 5px;
+    background: #9c27b0;
+    color: white;
+    letter-spacing: 0px;
+    border-radius: 2px;
+}
+
+.bt.end {
+    cursor: pointer;
+    padding: 3px 20px;
+    font-size: 12px;
+    text-transform: none;
+    margin: 0 5px;
+    background: #9c27b0;
+    color: white;
+    letter-spacing: 0px;
+    border-radius: 2px;
+}
+
+
+.jcrop-holder {
+    direction: ltr;
+    text-align: left
+}
+
+.jcrop-hline,
+.jcrop-vline {
+    background: #fff url(Jcrop.gif);
+    font-size: 0;
+    position: absolute
+}
+
+.jcrop-vline {
+    height: 100%;
+    width: 1px !important
+}
+
+.jcrop-vline.right {
+    right: 0
+}
+
+.jcrop-hline {
+    height: 1px !important;
+    width: 100%
+}
+
+.jcrop-hline.bottom {
+    bottom: 0
+}
+
+.jcrop-tracker {
+    height: 100%;
+    width: 100%;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none
+}
+
+.jcrop-handle {
+    background-color: #333;
+    border: 1px solid #eee;
+    width: 7px;
+    height: 7px;
+    font-size: 1px
+}
+
+.jcrop-handle.ord-n {
+    left: 50%;
+    margin-left: -4px;
+    margin-top: -4px;
+    top: 0
+}
+
+.jcrop-handle.ord-s {
+    bottom: 0;
+    left: 50%;
+    margin-bottom: -4px;
+    margin-left: -4px
+}
+
+.jcrop-handle.ord-e {
+    margin-right: -4px;
+    margin-top: -4px;
+    right: 0;
+    top: 50%
+}
+
+.jcrop-handle.ord-w {
+    left: 0;
+    margin-left: -4px;
+    margin-top: -4px;
+    top: 50%
+}
+
+.jcrop-handle.ord-nw {
+    left: 0;
+    margin-left: -4px;
+    margin-top: -4px;
+    top: 0
+}
+
+.jcrop-handle.ord-ne {
+    margin-right: -4px;
+    margin-top: -4px;
+    right: 0;
+    top: 0
+}
+
+.jcrop-handle.ord-se {
+    bottom: 0;
+    margin-bottom: -4px;
+    margin-right: -4px;
+    right: 0
+}
+
+.jcrop-handle.ord-sw {
+    bottom: 0;
+    left: 0;
+    margin-bottom: -4px;
+    margin-left: -4px
+}
+
+.jcrop-dragbar.ord-n,
+.jcrop-dragbar.ord-s {
+    height: 7px;
+    width: 100%
+}
+
+.jcrop-dragbar.ord-e,
+.jcrop-dragbar.ord-w {
+    height: 100%;
+    width: 7px
+}
+
+.jcrop-dragbar.ord-n {
+    margin-top: -4px
+}
+
+.jcrop-dragbar.ord-s {
+    bottom: 0;
+    margin-bottom: -4px
+}
+
+.jcrop-dragbar.ord-e {
+    margin-right: -4px;
+    right: 0
+}
+
+.jcrop-dragbar.ord-w {
+    margin-left: -4px
+}
+
+.jcrop-light .jcrop-hline,
+.jcrop-light .jcrop-vline {
+    background: #fff;
+    filter: alpha(opacity=70) !important;
+    opacity: .7 !important
+}
+
+.jcrop-light .jcrop-handle {
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    background-color: #000;
+    border-color: #fff;
+    border-radius: 3px
+}
+
+.img-area-inner {
+    width: 94%;
+    margin: 3%;
+}
+
+div#img-area {
+    float: left;
+    z-index: 10;
+    width: 100%;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+
+
+img#target {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+}
+
+.jcrop-dark .jcrop-hline,
+.jcrop-dark .jcrop-vline {
+    background: #000;
+    filter: alpha(opacity=70) !important;
+    opacity: .7 !important
+}
+
+.jcrop-dark .jcrop-handle {
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    background-color: #fff;
+    border-color: #000;
+    border-radius: 3px
+}
+
+.solid-line .jcrop-hline,
+.solid-line .jcrop-vline {
+    background: #fff
+}
+
+.jcrop-holder img,
+img.jcrop-preview {
+    max-width: none
+}
+
+.text-drag {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    align-items: center;
+    text-align: center;
+    margin: 0px 0px 20px 1px;
+}
+
+.center-bt {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin: 30px 0px;
+}
+
+li b {
+    font-weight: 500;
+}
+
+.title_form {
+    width: 92%;
+    margin: 4%;
+    font-size: 21px;
+    color: #000;
+    font-weight: 400;
+    text-align: center;
+}
+
+button.bt-reg {
+    width: 92%;
+    padding: 9px 20px;
+    font-size: 13px;
+    text-transform: none;
+    margin: 4%;
+    background: #9c27b0;
+    color: white;
+    letter-spacing: 0px;
+    border-radius: 2px;
+    border: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+a.help_login_a {
+    color: #4c667b;
+    float: left;
+    font-weight: 400;
+    margin: 0 3px;
+    text-align: center;
+}
+
+.help_login {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+p.help_login_p {
+    margin: 0;
+    padding: 0;
+}
+
+.porn-user-header a {
+    display: flex;
+}
+
+.but-c {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+.title-m {
+    font-size: 20px;
+    line-height: 1.33333;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 400;
+    position: relative;
+    color: black;
+    margin: 0px 0px 20px 0px;
+}
+
+div.memez {
+    border: 1px solid #efefef;
+    border-radius: 2px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    width: 700px;
+    overflow: hidden;
+    box-shadow: 1px 1px 8px #ececec;
+}
+
+.box_inside {
+    width: 280px;
+    background: #fff;
+    border: 1px solid #ece8e8;
+    margin: 10px 0;
+    padding: 10px 35px;
+    box-sizing: content-box;
+}
+
+.box {
+    width: 100%;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -ms-flex-align: center;
+    align-items: center;
+    float: left;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    margin: 3% 0
+}
+
+.input_placeholder {
+    color: #999;
+    font-size: 12px;
+    height: 40px;
+    left: 8px;
+    line-height: 40px;
+    text-align: left;
+    overflow: hidden;
+    pointer-events: none;
+    position: absolute;
+    right: 0;
+    text-overflow: ellipsis;
+    transform-origin: left;
+    transition: transform .1s ease-out;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    white-space: nowrap;
+}
+
+.input_box_inner {
+    margin: 2% 0;
+    padding: 0
+}
+
+.input_box,
+.input_box_inner {
+    width: 100%;
+    box-sizing: border-box;
+    float: left
+}
+
+.input_box {
+    position: relative;
+    overflow: hidden;
+}
+
+.input_box input {
+    border: 0;
+    -ms-flex: 1 0 0;
+    border: 1px solid rgb(236, 232, 232);
+    flex: 1 0 0;
+    margin: 0;
+    outline: 0;
+    overflow: hidden;
+    padding: 8px 8px 9px;
+    text-overflow: ellipsis;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 14px;
+    font-family: Segoe UI;
+    color: #47535d;
+}
+
+select#city {
+    border: 1px solid #f1f1f1;
+    float: left;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 0 10px #efefef;
+    color: silver;
+    height: 40px;
+    width: 70%;
+    margin: 2% 15%;
+    padding: 0 4%
+}
+
+.porn-category-up.stories {
+    font-size: 14px;
+    line-height: 2;
+    letter-spacing: 0px;
+    font-weight: 500;
+    position: relative;
+    color: #0e0e0e;
+    margin: 0px;
+    padding: 15px 25px 0px 25px;
+    white-space: pre-line;
+}
+
+.error-text {
+    text-align: center;
+    margin: 5% 0 0;
+    font-size: 15px;
+    font-weight: 400;
+}
+
+.done-img {
+    font-size: 12px;
+    color: #9c27b0;
+}
+
+.win_fixed-exit span:after {
+    content: "";
+    transform: rotate(-90deg);
+    display: block;
+    height: 1px;
+    width: 18px;
+    position: absolute;
+    left: 50%;
+    margin-left: -9px;
+    top: 50%;
+    margin-top: -1px;
+    background: #fff;
+}
+
+.win_fixed-exit {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 45px;
+    width: 54px;
+    border-radius: 50px;
+    z-index: 13;
+    cursor: pointer;
+}
+
+.win_fixed-exit span {
+    transform: rotate(45deg);
+    display: block;
+    height: 1px;
+    width: 18px;
+    position: absolute;
+    left: 44%;
+    margin-left: -9px;
+    top: 55%;
+    margin-top: -1px;
+    background: #fff;
+}
+
+.error,
+.error-text {
+    float: left;
+    width: 100%
+}
+
+
+
+.error {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: center;
+    justify-content: center;
+    position: relative;
+    -ms-flex-direction: column;
+    flex-direction: column
+}
+
+.error-text-min {
+    float: left;
+    width: 100%;
+    text-align: center;
+    margin: 2% 0 7%;
+    font-size: 15px;
+    color: #4e4242
+}
