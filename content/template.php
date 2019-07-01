@@ -13,14 +13,14 @@
     <meta property="og:title" content="<?php echo $Title;?>">
     <link rel="shortcut icon" href="/favicon.ico">
 
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/reset.css">
-    <link rel="stylesheet" href="/css/artplayer.css">
-    <link rel="stylesheet" href="/fontawesome/font-awesome.min.css">
-    <link rel="stylesheet" href="/css/lightgallery.min.css">
-    <link rel="stylesheet" href="/css/lg-fb-comment-box.min.css">
-    <link rel="stylesheet" href="/css/lg-transitions.min.css">
-    <script src="/js/artplayer.js"></script>
+    <link rel="stylesheet" href="/css/style.css?88005535351">
+    <link rel="stylesheet" href="/css/reset.css?88005535352">
+    <link rel="stylesheet" href="/css/artplayer.css?88005535335">
+    <link rel="stylesheet" href="/fontawesome/font-awesome.min.css?83800553535">
+    <link rel="stylesheet" href="/css/lightgallery.min.css?88005543535">
+    <link rel="stylesheet" href="/css/lg-fb-comment-box.min.css?85800553535">
+    <link rel="stylesheet" href="/css/lg-transitions.min.css?88006553535">
+    <script src="/js/artplayer.js?880056653535"></script>
 
 </head>
 
@@ -42,10 +42,10 @@
 </div>
 </div>
 
-    <script src="/js/jquery-3.4.0.min.js"></script>
-    <script src="/js/autosize.min.js"></script>
-    <script src="/js/script.js"></script>
-    <script src="/js/lightgallery-all.min.js"></script>
+    <script src="/js/jquery-3.4.0.min.js?5496864985"></script>
+    <script src="/js/autosize.min.js?567554055"></script>
+    <script src="/js/script.js?54646456453"></script>
+    <script src="/js/lightgallery-all.min.js?567567567"></script>
      
     <!-- <script src="https://kit.fontawesome.com/bd2177d70d.js"></script> -->
     <!-- <script src='https://www.google.com/recaptcha/api.js?hl=ru'></script> -->
