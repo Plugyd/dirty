@@ -1,3 +1,5 @@
+
+
 <?
     use React\Core\Store;
     $request = explode('/', $_SERVER['REQUEST_URI']);
@@ -12,7 +14,7 @@
 
 <section class="section section-20" id="">
     <div class="container">
-        <div class="row row-50 center">
+        <div class="row row-50 ">
             <div class="title"><?=$data['name']?></div>
             <div class="desc"><?=$data['desc']?></div>
         </div>
@@ -24,12 +26,10 @@ $imgs = explode(';',$data['imgs']);
 $page = 1;
 ?>
 
-<div id="lightgallery">
-
+<div id="lightgallery" class="col-photo">
     <? foreach ($imgs as $img) :?>
         <a href="<?=$img?>" class='s-photo-outer-photo'>
-        <div class="pages-photos-photo">Изображение <?=$page?></div>
-                <img src="<?=$img?>" alt="" class="s-photo-photo">
+             <img src="<?=$img?>" alt="" class="s-photo-photo">
         </a>
         <? $page++;?>
     <? endforeach;?>

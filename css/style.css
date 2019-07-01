@@ -577,7 +577,7 @@ ul.porn-header__submenu-sub li:hover {
 }
 
 .desc {
-    font-size: 14px;
+    font-size: 13px;
     line-height: 2.1;
     letter-spacing: 1px;
     font-weight: 300;
@@ -1228,7 +1228,7 @@ ul.rule-download.rul {
     width: 90%;
 }
 
-input#imgfile {
+input#imgfile,input#imgload,input#imgfilecategory,input#imgfilevideo {
     display: none;
 }
 
@@ -1764,8 +1764,29 @@ select#city {
     float: left;
     width: 100%
 }
+.col-photo {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
 
+img.s-photo-photo {
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 200px;
+}
 
+.pages-photos-photo {width: 100%;padding: 5px;display: flex;justify-content: center;align-items: center;color: #333;font-weight: 400;font-size: 14px;}
+
+a.s-photo-outer-photo {
+    margin: 20px;
+    border: 1px solid #efefef;
+    overflow: hidden;
+    align-items: center;
+    justify-content: center;
+}a
 
 .error {
     display: -ms-flexbox;

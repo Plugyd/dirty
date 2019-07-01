@@ -32,6 +32,18 @@ class ControllerLoad extends Controller
 			$access = '1';
 		}
 
+		if ($request[2] == 'photo') {
+			$viewway = 'content/views/load/photo.php';
+			$settings['Title'] = 'Добавить фотографии';
+			$access = '1';
+		}
+
+		if ($request[2] == 'comics') {
+			$viewway = 'content/views/load/comics.php';
+			$settings['Title'] = 'Добавить комиксы';
+			$access = '1';
+		}
+
 
 		$appearance = 'minimal.php';
 

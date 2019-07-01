@@ -135,6 +135,49 @@ $(document).on('click', '.win_fixed-exit', function () {
 
 });
 
+$(document).on('click', '#photos', function () {
+    warning = 0;
+    $('.warning').remove();
+    $('.response-form').stop(true, true).fadeOut();
+
+    var name = valid('#name', 4, 128);
+    var desc = valid('#desc', 4, 1024);
+    var img =  $('#img').val();
+    var pre =  $('#pre').val();
+    if (warning == 0) {
+
+        $.ajax({
+            url: '/ajax/iphotos',
+            type: 'post',
+            dataType: 'json',
+            data: {
+                name: name,
+                desc: desc,
+                img: img,
+                pre: pre
+            },
+            success: Success,
+            beforeSend: Before
+        });
+
+        function Success(data) {
+            console.log(data);
+
+            if (data[0] == true) {
+                $('.response-form').html('<div class="done-img">Фотографии добавлены.</div>');
+                $('.response-form').fadeIn();
+            } else {
+                $('.response-form').text(data[1]);
+                $('.response-form').fadeIn();
+            }
+        }
+
+        function Before() {
+            //TODO анимация загрузки
+        }
+    }
+});
+
 
 $(document).on('click', '#category', function () {
     warning = 0;
@@ -149,7 +192,7 @@ $(document).on('click', '#category', function () {
         $.ajax({
             url: '/ajax/icategory',
             type: 'post',
-            dataType: 'json',
+            dataType: 'html',
             data: {
                 namec: namec,
                 url: url
@@ -450,7 +493,10 @@ $(document).on('click', '.bt-st', function () {
 
 });
 
-$('.input_box textarea').on("keyup", function () {
+
+
+
+$('.input_box textarea').on("input", function () {
     if ($(this).val().length > 0) {
         $(this).css({
             "padding": "14px 8px 2px 8px"
@@ -468,7 +514,7 @@ $('.input_box textarea').on("keyup", function () {
     }
 });
 
-$('.input_box input').on("keyup", function () {
+$('.input_box input').on("input", function () {
     if ($(this).val().length > 0) {
         $(this).css({
             "padding": "14px 8px 2px 8px"

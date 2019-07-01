@@ -14,6 +14,22 @@ $(document).on('click', '#wincategory', function () {
     }
 });
 
+$(document).on('click', '#winload', function () {
+    $.ajax({
+        url: '/ajax/winloadimg',
+        type: 'POST',
+        dataType: 'HTML',
+        success: Success
+    });
+
+    function Success(data) {
+        $('body').append(data).css({
+            "overflow": "hidden"
+        })
+        $('.owner-load').fadeIn();
+    }
+});
+
 
 $(document).on('click', '#winvideo', function () {
     $.ajax({
@@ -43,6 +59,13 @@ $(document).on('change', '#imgfilevideo', function () {
     });
 });
 
+$(document).on('change', '#imgload', function () {
+    $.each(this.files, function (i, file) {
+        sendFile(file, '/ajax/img', 'imgs');
+    });
+});
+
+
 
 function sendFile(file, url, type) {
     var xhr = new XMLHttpRequest();
@@ -59,11 +82,15 @@ function sendFile(file, url, type) {
         if (xhr.readyState == 4 && xhr.status == 200) {
             var data = JSON.parse((xhr.responseText));
             if (data[0] == true) {
+           
+             if(type == "imgs"){
+                $('#img').val($('#img').val() + data[1] + ';');
+             }else {
                 $('.owner-load').hide();
                 $('.owner-drag').show();
                 $('#target').attr('src', data[1]);
-
-                targetStart(type);
+                 targetStart(type);
+             }
             }
         }
     };
