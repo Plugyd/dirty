@@ -18,33 +18,34 @@ class ControllerLoad extends Controller
 		if ($request[2] == 'category') {
 			$viewway = 'content/views/load/category.php';
 			$settings['Title'] = 'Добавить категорию';
-			$access = '1';
 		}
 		if ($request[2] == 'video') {
 			$viewway = 'content/views/load/video.php';
 			$settings['Title'] = 'Добавить видео';
-			$access = '1';
 		}
 
 		if ($request[2] == 'stories') {
 			$viewway = 'content/views/load/stories.php';
 			$settings['Title'] = 'Добавить историю';
-			$access = '1';
 		}
 
 		if ($request[2] == 'photo') {
 			$viewway = 'content/views/load/photo.php';
 			$settings['Title'] = 'Добавить фотографии';
-			$access = '1';
 		}
 
 		if ($request[2] == 'comics') {
 			$viewway = 'content/views/load/comics.php';
 			$settings['Title'] = 'Добавить комиксы';
-			$access = '1';
 		}
 
+		if ($request[2] == 'memes') {
+			$viewway = 'content/views/load/memes.php';
+			$settings['Title'] = 'Добавить мемы';
+		
+		}
 
+		$access = '69';
 		$appearance = 'minimal.php';
 
 		View::build($settings, $viewway, $appearance,array(),$access);

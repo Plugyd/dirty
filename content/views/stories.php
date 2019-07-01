@@ -9,7 +9,6 @@
     $min = ($pages * 15) - 15;
     $max = ($pages * 15);
 
-
     Store::Prepare('SELECT id FROM history ');
     Store::Execute();
     $count = Store::RowCount();
@@ -53,7 +52,7 @@
 printf('<div tooltip="Номер страницы" flow="right" class="page-now">%s</div>',$pages);
 if ($pages == 1)
 {
-    printf('<a href="/stories/%s" tooltip="Следующая страница" flow="left" class="page-right"><i class="fa fa-angle-right"></i></a>',$pages + 1);
+    if($pages != $nump) printf('<a href="/stories/%s" tooltip="Следующая страница" flow="left" class="page-right"><i class="fa fa-angle-right"></i></a>',$pages + 1);
 }else {
     if($pages == $nump) printf('<a href="/stories/%s" tooltip="Предыдущая страница" flow="right" class="page-left"><i class="fa fa-angle-left"></i></a>
     ',$pages - 1);

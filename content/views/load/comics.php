@@ -2,7 +2,7 @@
 	<div class="box_insideall">
 
 		<div class="box_inside">
-			<div class="title_form">Загрузка фотографии</div>
+			<div class="title_form">Загрузка комиксов</div>
 
 			<div class="input_box_inner">
 				<div class="input_box">
@@ -31,7 +31,7 @@
 					<input class="" autocomplete="off" id="pre" type="text">
 				</div>
 			</div>
-			<button type="submit" class="bt bt-reg" id="photos">Загрузить</button>
+			<button type="submit" class="bt bt-reg" id="comics">Загрузить</button>
 			<div class="response-form-all">
 				<div class="response-form"></div>
 			</div>
@@ -40,6 +40,6 @@
 	</div>
 	<div class="box_inside">
 		<div class="title_form">Изображения</div>
-		<button type="submit" class="bt bt-reg" id="winload">Загрузить изображение?</button>
+		<button type="submit" class="bt bt-reg" id="wincomics">Загрузить изображение?</button>
 	</div>
 </div>
